@@ -1,0 +1,72 @@
+version: '3'
+
+services:
+  diplodatos_bigdata:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: diplodatos_bigdata
+    environment:
+      - ZEPPELIN_LOG_DIR=/logs
+      - ZEPPELIN_NOTEBOOK_DIR=/notebook
+    volumes:
+      - ./vols/conf:/opt/zeppelin/conf
+      - ./vols/logs:/logs
+      - ./vols/notebook:/notebook
+      - ./archivos_clases:/diplodatos_bigdata
+      #-v "%CD%\..:/diplodatos_bigdata"^
+    user: "1000"
+    hostname: localhost
+    tty: true
+    ports:
+      - 8080:8080
+      - 4040:4040
+
+  pyspark:
+     image: jupyter/pyspark-notebook:2023-04-24
+     # limit the memory and cpu usage
+     # mem_limit: 512m
+     # mem_reservation: 128M
+     # cpus: 0.5
+     container_name: pyspark
+     ports:
+       - "8888:8888"
+     volumes:
+       - ./jupyter_workdir:/home/working_dir
+       # - ./docker_shared_folder/secrets:/etc/secrets
+     user: root
+     working_dir: /home/working_dir
+     environment:
+       JUPYTER_ENABLE_LAB: '1' 
+       JUPYTER_TOKEN: 'bigdata'
+       NB_USER: bigdata
+       NB_GID: 1000
+       CHOWN_HOME: 'yes'
+       CHOWN_HOME_OPTS: '-R'
+       SPARK_CLASSPATH: '/home/working_dir/driver_jdbc/postgresql-42.2.27.jre7.jar'
+
+  postgres:
+    container_name: postgres_db
+    # Official Postgres image from DockerHub (we use the last version)
+    image: 'postgres:15'
+    # limit the memory and cpu usage
+    # mem_limit: 512m
+    # mem_reservation: 128M
+    # cpus: 0.5
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    # By default, a Postgres database is running on the 5432 port.
+    # If we want to access the database from our computer (outside the container),
+    # we must share the port with our computer's port.
+    # The syntax is [port we want on our machine]:[port we want to retrieve in the container]
+    # Note: You are free to change your computer's port,
+    # but take into consideration that it will change the way
+    # you are connecting to your database.
+    ports:
+      - 5435:5435
+    command: "-p 5435"
+    environment:
+      - POSTGRES_DB=postgres # The PostgreSQL default database (automatically created at first launch)
+      - POSTGRES_USER=postgres # The PostgreSQL user (useful to connect to the database)
+      - POSTGRES_PASSWORD=postgres # The PostgreSQL password (useful to connect to the database)
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
