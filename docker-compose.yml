@@ -7,11 +7,11 @@ services:
       dockerfile: Dockerfile
     container_name: diplodatos_bigdata
     environment:
-      - ZEPPELIN_LOG_DIR=/logs
+      - ZEPPELIN_LOG_DIR=/opt/zeppelin/logs
       - ZEPPELIN_NOTEBOOK_DIR=/notebook
     volumes:
       - ./vols/conf:/opt/zeppelin/conf
-      - ./vols/logs:/logs
+      - ./vols/logs:/opt/zeppelin/logs
       - ./vols/notebook:/notebook
       - ./archivos_clases:/diplodatos_bigdata
       #-v "%CD%\..:/diplodatos_bigdata"^
