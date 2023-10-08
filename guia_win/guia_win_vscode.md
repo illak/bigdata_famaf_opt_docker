@@ -92,4 +92,38 @@ veremos el prompt de la terminal del contenedor *diplodatos_bigdata* y podemos e
 
 ![prompt](imgs/captura_9.jpg)
 
+---
 
+## Para conectarse remotamente por ssh
+Esto considera que vas por la opción 4 de instalación del entorno y es para utilizar *vscode* para conectarte por ssh y para crear un tunel ssh para port forwarding.
+
+**Requisitos**
+
+- [Servidor OpenSSH](https://learn.microsoft.com/es-mx/windows-server/administration/openssh/openssh_install_firstuse)
+
+para abrir el menú de conexión remota, hacer click en el icono que muestra la imágen del borde inferior izquierdo de vscode:
+
+![](imgs/captura_11.jpg)
+
+esto abrirá una ventana en la cual debemos seleccionar *Connect to Host...*
+
+![connect to host](imgs/captura_12.jpg)
+
+luego *Add New SSH Host...*
+
+![add new ssh host](imgs/captura_13.jpg)
+
+en la ventana que se abre ingresamos el comando para conectarse remotamente por ssh con los datos que les pasamos de las máquinas remotas
+
+![add ssh data](imgs/captura_14.jpg)
+
+A continuación podemos agregar los datos en un archivo *config* en el directorio *.ssh* para guardar la conexión con el formato:
+
+```
+Host <nombre>
+    HostName <ip>
+    User <usuario>
+```
+## Para crear el tunel ssl con vscode
+
+Seguir [esta guía](https://code.visualstudio.com/docs/remote/ssh#_forwarding-a-port-creating-ssh-tunnel).
