@@ -1,4 +1,4 @@
-# Guía para instalar el entorno de la materia optativa en Windows
+# Guía para levantar el entorno de la materia optativa en Windows
 
 Esta guia considera el segundo método de instalación
 
@@ -14,6 +14,25 @@ Asegurarse de tener las siguientes características de windows habilitadas:
 ![Características de windows](imgs/captura_1.jpg)
 
 Software recomendado para interactuar con todos los recursos de la materia (en windows): [vscode](https://code.visualstudio.com/) y [powershell](https://learn.microsoft.com/es-es/powershell/scripting/overview?view=powershell-7.3) (la guía hace uso de ambas).
+
+---
+## Para limitar los recursos que utiliza docker en windows
+
+Primero asegurarse que docker está "apagado" y toda instancia de *wsl2* también (en la terminal: ```wsl --shutdown```).
+
+Vamos al explorador de archivos y escribimos lo siguiente:
+![profile dir](imgs/captura_10.jpg)
+
+*%UserProfile%*
+
+para ir al directorio en donde crearemos el siguiente archivo: ```.wslconfig``` y en el cual pegaremos lo siguiente:
+
+```
+[wsl2]
+processors=4
+memory=5GB
+```
+con esto docker utilizará como máximo 4 procesadores (virtuales) y 5GB de memoria RAM. Pueden modificar estos valores teniendo en cuenta que Spark necesita un mínimo para funcionar bien.
 
 ---
 
