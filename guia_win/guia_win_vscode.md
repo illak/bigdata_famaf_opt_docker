@@ -35,6 +35,7 @@ memory=5GB
 con esto docker utilizará como máximo 4 procesadores (virtuales) y 5GB de memoria RAM. Pueden modificar estos valores teniendo en cuenta que Spark necesita un mínimo para funcionar bien.
 
 ---
+## Levantamos el entorno
 
 Ejecutamos **vscode** y luego abrimos el directorio con el repo de la materia:
 
