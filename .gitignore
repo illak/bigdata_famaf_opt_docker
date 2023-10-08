@@ -1,3 +1,4 @@
 /jupyter_workdir/notebooks/.ipynb_checkpoints/
-/vols/notebook/*.zpl
+/vols/notebook/*.zpln
+/vols/notebook/~Trash
 /postgres_data/
