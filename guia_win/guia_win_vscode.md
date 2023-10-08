@@ -1,4 +1,4 @@
-# Guía para instalar el entorno de la materia optativa en Windows
+# Guía para levantar el entorno de la materia optativa en Windows
 
 Esta guia considera el segundo método de instalación
 
