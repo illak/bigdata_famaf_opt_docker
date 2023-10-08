@@ -2,12 +2,17 @@
 
 Esta guia considera el segundo método de instalación
 
-> En tu computadore con Docker compose
+> En tu computadora con Docker compose
 
 **Requisitos**:
 * Para tener disponible este repositorio en tu maquina de trabajo e instalar el software de la materia hay que instalar el programa [git](https://git-scm.com/download/win).
-
 * [Docker compose](https://docs.docker.com/desktop/install/windows-install/).
+
+* Clonar el repositorio: 
+
+```bash
+git clone https://bitbucket.org/bigdata_famaf/diplodatos_bigdata.git
+``` 
 
 Asegurarse de tener las siguientes características de windows habilitadas:
 
@@ -23,9 +28,7 @@ Primero asegurarse que docker está "apagado" y toda instancia de *wsl2* tambié
 Vamos al explorador de archivos y escribimos lo siguiente:
 ![profile dir](imgs/captura_10.jpg)
 
-*%UserProfile%*
-
-para ir al directorio en donde crearemos el siguiente archivo: ```.wslconfig``` y en el cual pegaremos lo siguiente:
+*%UserProfile%* para ir al directorio en donde crearemos el siguiente archivo: ```.wslconfig``` y en el cual pegaremos lo siguiente:
 
 ```
 [wsl2]
